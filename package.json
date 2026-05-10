@@ -1,7 +1,7 @@
 {
-  "name": "ravencoin-rpc-proxy",
+  "name": "evrmore-rpc-proxy",
   "version": "1.1.1",
-  "description": "Ravencoin Web API via safe proxy",
+  "description": "Evrmore Web API via safe proxy",
   "main": "index.js",
   "dependencies": {
     "@ravenrebels/ravencoin-rpc": "^0.4.3",
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ravenrebels/ravencoin-rpc-proxy.git"
+    "url": "git+https://github.com/EvrmoreOrg/evrmore-rpc-proxy.git"
   },
   "keywords": [
-    "Ravencoin"
+    "Evrmore"
   ],
-  "author": "Raven Rebels (dicklarsson@gmail.com)",
+  "author": "Raven Rebels (dicklarsson@gmail.com) and Evrmore",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ravenrebels/ravencoin-rpc-proxy/issues"
+    "url": "https://github.com/EvrmoreOrg/evrmore-rpc-proxy/issues"
   },
-  "homepage": "https://github.com/ravenrebels/ravencoin-rpc-proxy#readme",
+  "homepage": "https://github.com/EvrmoreOrg/evrmore-rpc-proxy#readme",
   "devDependencies": {
     "jest": "29.3.1"
   }

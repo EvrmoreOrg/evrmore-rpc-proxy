@@ -1,8 +1,8 @@
-# ravencoin-rpc-proxy
+# evrmore-rpc-proxy
 
-## A Web API for Ravencoin
+## A Web API for Evrmore
 
-**Purpose**: make Ravencoin blockchain available via HTTP/WEB by exposing the RPC-API via a Proxy that only allows safe procedures.
+**Purpose**: make Evrmore blockchain available via HTTP/WEB by exposing the RPC-API via a Proxy that only allows safe procedures.
 
 Check out this software live at https://rpc.ting.finance/
 ![image](https://user-images.githubusercontent.com/9694984/226344965-7f01cee1-99ef-4a7f-b9db-8cfce4ccb5e8.png)
@@ -12,13 +12,6 @@ Check out this software live at https://rpc.ting.finance/
 
 When your local proxy is up and running you send requests using HTTP Post.
 The body of the request should contain string **method** and array **params** 
-
-### Examples
-
-### Live examples on Code Pen
-Feel free to fork it and play around
-- Get block count https://codepen.io/RavenRebels/full/jOpmErK
-- Address balances https://codepen.io/RavenRebels/pen/RwBVEbW
 
 ### Example for web browser and Node.js 18+
 ```
@@ -46,7 +39,7 @@ rpc("getaddressbalance", [{ "addresses": ["RXissueSubAssetXXXXXXXXXXXXXWcwhwL"] 
 
 async function rpc(method, params) {
     const data = { method, params };
-    const URL = 'https://rvn-rpc-mainnet.ting.finance/rpc'; //replace with your endpoint
+    const URL = 'https://evr-rpc-mainnet.evrmorecoin.org/rpc'; //replace with your endpoint
     const response = await fetch(URL, {
         method: 'POST',
         headers: {
@@ -71,8 +64,8 @@ According to JSON-RPC 2.0 a request object could contain four attributes, jsonrp
 
 ## How to install
 ```
-git clone https://github.com/ravenrebels/ravencoin-rpc-proxy.git
-cd ravencoin-rpc-proxy
+git clone https://github.com/EvrmoreOrg/evrmore-rpc-proxy.git
+cd evrmore-rpc-proxy
 npm install 
 ```
 
@@ -82,18 +75,18 @@ Configure your setup in ./config.json
 {
   "concurrency": 4,
   "endpoint": "https://rpc.ting.finance/rpc",
-  "environment": "Ravencoin Testnet",
+  "environment": "Evrmore Testnet",
   "local_port": 9999,
   "nodes": [
     {
       "name": "Node number 1",
       "username": "dauser",
       "password": "dapassword",
-      "raven_url": "http://localhost:8888"
+      "evrmore_url": "http://localhost:8888"
     },
     {
       "name": "Nody two tower", 
-      "raven_url": "http://127.0.0.1:8766",
+      "evrmore_url": "http://127.0.0.1:8766",
       "password": "supermega2354ergsecret",
       "username": "supermegas3435ecwertwertret"
     }
@@ -102,7 +95,7 @@ Configure your setup in ./config.json
 
   ```
 
-### Sir, how should my Raven core node be configured?
+### Sir, how should my Evrmore core node be configured?
 Here is a recommendation
 ```
 server=1 
@@ -139,12 +132,12 @@ dbcache=4096
 npm start
 ```
 
-## Help with Ravencoin RPC calls, arguments and stuff
-Go to https://rvn-rpc-mainnet.ting.finance/ for in depth description of each RPC call
+## Help with Evrmore RPC calls, arguments and stuff
+Go to https://evr-rpc-mainnet.evrmorecoin.org for in depth description of each RPC call
 ![image](https://user-images.githubusercontent.com/9694984/212323158-6ed00511-cfcc-4338-990c-ebb57f590cf0.png)
 
 
-## List of Ravencoin RPC calls
+## List of Evrmore RPC calls
 This is a raw list, a lot of these calls are not whitelisted.
 For example we do NOT let developers call procedure `dumpprivkey`
 ```
@@ -168,8 +161,8 @@ listmyassets "( asset )" ( verbose ) ( count ) ( start ) (confs)
 purgesnapshot "asset_name" block_height
 reissue "asset_name" qty "to_address" "change_address" ( reissuable ) ( new_units) "( new_ipfs )" 
 transfer "asset_name" qty "to_address" "message" expire_time "change_address" "asset_change_address"
-transferfromaddress "asset_name" "from_address" qty "to_address" "message" expire_time "rvn_change_address" "asset_change_address"
-transferfromaddresses "asset_name" ["from_addresses"] qty "to_address" "message" expire_time "rvn_change_address" "asset_change_address"
+transferfromaddress "asset_name" "from_address" qty "to_address" "message" expire_time "evr_change_address" "asset_change_address"
+transferfromaddresses "asset_name" ["from_addresses"] qty "to_address" "message" expire_time "evr_change_address" "asset_change_address"
 
 == Blockchain ==
 clearmempool
@@ -303,7 +296,7 @@ abortrescan
 addmultisigaddress nrequired ["key",...] ( "account" )
 addwitnessaddress "address"
 backupwallet "destination"
-bumpfee has been deprecated on the RVN Wallet.
+bumpfee has been deprecated on the EVR Wallet.
 dumpprivkey "address"
 dumpwallet "filename"
 encryptwallet "passphrase"

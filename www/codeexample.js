@@ -1,9 +1,9 @@
 const { getRPC, methods } = require("@ravenrebels/ravencoin-rpc");
-//@ravenrebels/ravencoin-rpc believes that username/password is mandatory,
+//the program  believes that username/password is mandatory,
 //so just send in whatever
 const username ="whatever";
 const password ="whatever"; 
-//Check the ENDPOINT URL, "https://rvn-rpc-testnet.ting.finance/rpc" or "https://rvn-rpc-mainnet.ting.finance/rpc"
+//Check the ENDPOINT URL, "https://evr-rpc-testnet.evrmorecoin.org/rpc" or "https://evr-rpc-mainnet.evrmorecoin.org/rpc"
 const rpc = getRPC(username, password, "$ENDPOINT");
 
 const promise = rpc(methods.getassetdata, ["UGLY"]);

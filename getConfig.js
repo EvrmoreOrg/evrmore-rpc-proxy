@@ -10,18 +10,18 @@ function getConfig() {
     {
         "concurrency": 4,
         "endpoint": "https://rpc.ting.finance/rpc",
-        "environment": "Ravencoin Testnet",
+        "environment": "Evrmore Testnet",
         "local_port": 9999,
         "nodes": [
           {
             "name": "Node number 1",
             "username": "dauser",
             "password": "dapassword",
-            "raven_url": "http://localhost:8888"
+            "evrmore_url": "http://localhost:8888"
           },
           {
             "name": "Node number 2", 
-            "raven_url": "http://127.0.0.1:8766",
+            "evrmore_url": "http://127.0.0.1:8766",
             "password": "secret",
             "username": "secret"
           }
