@@ -1,4 +1,4 @@
-const { methods } = require("@ravenrebels/ravencoin-rpc");
+const { methods } = require("./lib/rpcMethods");
 const { getRPCNode, getNodes } = require("./getRPCNode");
 const { default: PQueue } = require("p-queue"); //NOTE version 6 with support for CommonJS
 const process = require("process"); //to get memory used

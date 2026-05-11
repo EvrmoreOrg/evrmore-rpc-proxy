@@ -1,4 +1,5 @@
-const { getRPC, methods } = require("@ravenrebels/ravencoin-rpc");
+const { getRPC } = require("../lib/evrmoreRpc");
+const { methods } = require("../lib/rpcMethods");
 //the program  believes that username/password is mandatory,
 //so just send in whatever
 const username ="whatever";
