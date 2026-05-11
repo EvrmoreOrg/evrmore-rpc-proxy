@@ -1,0 +1,16 @@
+{
+  "network": "mainnet",
+  "concurrency": 4,
+  "endpoint": "https://rpc.example.org/rpc",
+  "environment": "Evrmore Mainnet",
+  "heading": "My RPC proxy",
+  "local_port": 9999,
+  "nodes": [
+    {
+      "name": "Local node",
+      "username": "rpcuser",
+      "password": "rpcpassword",
+      "evrmore_url": "http://127.0.0.1:8766"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 const { getRPC } = require("../lib/evrmoreRpc");
-const { methods } = require("../lib/rpcMethods");
+const { getMethods } = require("../lib/rpcMethodsIndex");
+// Use "testnet" when calling a testnet RPC URL; this example assumes mainnet.
+const methods = getMethods("mainnet");
 //the program  believes that username/password is mandatory,
 //so just send in whatever
 const username ="whatever";

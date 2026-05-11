@@ -4,6 +4,8 @@
 
 **Purpose**: make Evrmore blockchain available via HTTP/WEB by exposing the RPC-API via a Proxy that only allows safe procedures.
 
+**Operators (mainnet vs testnet):** each running instance is either mainnet or testnet (`"network"` in `config.json`). See [docs/operator-rpc-networks.md](docs/operator-rpc-networks.md) and [config.example.json](config.example.json).
+
 Check out this software live at https://rpc.ting.finance/
 ![image](https://user-images.githubusercontent.com/9694984/226344965-7f01cee1-99ef-4a7f-b9db-8cfce4ccb5e8.png)
 

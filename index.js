@@ -1,4 +1,4 @@
-const { methods } = require("./lib/rpcMethods");
+const { getMethods } = require("./lib/rpcMethodsIndex");
 const { getRPCNode, getNodes } = require("./getRPCNode");
 const { default: PQueue } = require("p-queue"); //NOTE version 6 with support for CommonJS
 const process = require("process"); //to get memory used
@@ -6,7 +6,10 @@ const cacheService = require("./cacheService");
 const cors = require("cors");
 const express = require("express");
 const getConfig = require("./getConfig");
-const { whitelist, isWhitelisted } = require("./whitelist");
+const { getActiveWhitelist, isWhitelisted } = require("./whitelist");
+
+const config = getConfig();
+const methods = getMethods(config.network);
 
 let numberOfRequests = 0;
 
@@ -48,8 +51,6 @@ app.use(cors());
 //Default size limit for request are too small, increase it
 app.use(express.json({ limit: "2mb" }));
 
-const config = getConfig();
-
 //Default to concurrency 1
 const queue = new PQueue({ concurrency: config.concurrency || 1 });
 
@@ -60,7 +61,7 @@ app.use(express.json());
 app.use(express.static("www"));
 
 app.get("/whitelist", (req, res) => {
-  res.send(whitelist);
+  res.send(getActiveWhitelist(config.network));
   return;
 });
 
@@ -88,6 +89,7 @@ app.get("/settings", (req, res) => {
     heading: config.heading,
     environment: config.environment,
     endpoint: config.endpoint,
+    network: config.network,
   };
   res.send(obj);
 });
@@ -112,7 +114,7 @@ async function addToQueue(request, response) {
     cacheService.addMethod(method, new Date());
     let promise = null;
 
-    const shouldCache = cacheService.shouldCache(method);
+    const shouldCache = cacheService.shouldCache(method, config.network);
 
     if (shouldCache === true) {
       promise = cacheService.get(method, params);
@@ -176,7 +178,7 @@ app.post("/rpc", async (req, res) => {
     //check whitelist
     const method = req.body.method;
     const params = req.body.params;
-    const inc = isWhitelisted(method, params);
+    const inc = isWhitelisted(method, config.network);
 
     //Reset counter if too large
     if (numberOfRequests > Number.MAX_SAFE_INTEGER - 1000) {

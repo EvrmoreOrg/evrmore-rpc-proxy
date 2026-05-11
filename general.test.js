@@ -1,17 +1,17 @@
 const { isWhitelisted } = require("./whitelist");
 
 test('Stop not whitelisted', () => {
-    const result = isWhitelisted("stop");
+    const result = isWhitelisted("stop", "mainnet");
     expect(result).toBe(false);
 });
 
 
 test('dumpprivkey not whitelisted', () => {
-    const result = isWhitelisted("dumpprivkey");
+    const result = isWhitelisted("dumpprivkey", "mainnet");
     expect(result).toBe(false);
 });
 
 test("getblockcount not whitelisted", () => {
-    const result = isWhitelisted("dumpprivkey");
+    const result = isWhitelisted("dumpprivkey", "mainnet");
     expect(result).toBe(false);
 });

@@ -50,6 +50,7 @@ function getNodes() {
       active: n.active,
       bestblockhash: n.bestblockhash,
       name: n.name,
+      network: config.network,
     });
   }
   return list;
