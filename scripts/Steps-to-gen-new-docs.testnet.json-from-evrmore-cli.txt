@@ -1,0 +1,23 @@
+
+Scripts for generating new "docs.testnet.json" or "docs.mainnet.json" files from the Evrmore node
+=================================================================================================
+
+1) To generate "help_cmd_brief_list_cleaned.txt" from the Evrmore node do:
+
+	evrmore-1.0.5-b0320a173/bin/evrmore-cli -testnet -rpcuser=xx -rpcpassword=yy help > help_cmd_brief_list.txt
+
+2) To generate "help_cmd_brief_list_cleaned.txt" from "help_cmd_brief_list.txt" do:
+
+	help-cmd-brief-list-to-cleaned.sh
+
+3) To generate "help_cmd_details_list.txt" from "help_cmd_brief_list_cleaned.txt" using the Evrmore node do:
+
+	while IFS="" read -r -u 10 list_item || [ -n "$list_item" ]; do echo "$list_item: " >> help_cmd_details_list.txt; evrmore-1.0.5-b0320a173/bin/evrmore-cli -testnet -rpcuser=xx -rpcpassword=yy help "$list_item" >> help_cmd_details_list.txt; done 10< "help_cmd_brief_list_cleaned.txt"
+	
+4) To generate "docs.testnet.json"	from "help_cmd_details_list.txt" do: 
+
+	help-cmd-details-to-docs-json.sh
+	
+5) If this is testnet, then in "docs.testnet.json" replace every "8819" with "18819"
+	
+
