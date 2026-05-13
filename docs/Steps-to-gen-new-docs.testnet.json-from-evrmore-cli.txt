@@ -18,7 +18,7 @@ Scripts for generating new "docs.testnet.json" or "docs.mainnet.json" files from
 
 	while IFS="" read -r -u 10 list_item || [ -n "$list_item" ]; do echo "$list_item: " >> help_cmd_details_list_testnet.txt; /home/ubuntu/evrmore_prebuilt_code/evrmore-2.0.0test1-88fc8c74c/bin/evrmore-cli -testnet -rpcuser=xx -rpcpassword=yy help "$list_item" >> help_cmd_details_list_testnet.txt; done 10< "help_cmd_brief_list_cleaned_testnet.txt"
 
-	while IFS="" read -r -u 10 list_item || [ -n "$list_item" ]; do echo "$list_item: " >> help_cmd_details_list_mainnet.txt; evrmore-1.0.5-b0320a173/bin/evrmore-cli -rpcuser=xx -rpcpassword=yy help "$list_item" >> help_cmd_details_list_mainnet.txt; done 10< "help_cmd_brief_list_cleaned_mainnet.txt"
+	while IFS="" read -r -u 10 list_item || [ -n "$list_item" ]; do echo "$list_item: " >> help_cmd_details_list_mainnet.txt; /home/ubuntu/evrmore_prebuilt_code/evrmore-1.0.5-b0320a173/bin/evrmore-cli -rpcuser=xx -rpcpassword=yy help "$list_item" >> help_cmd_details_list_mainnet.txt; done 10< "help_cmd_brief_list_cleaned_mainnet.txt"
 	
 4) To generate "docs.testnet.json"	from "help_cmd_details_list.txt" do: 
 
