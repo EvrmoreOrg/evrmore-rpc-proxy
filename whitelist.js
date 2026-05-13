@@ -1,12 +1,9 @@
 const whitelistMainnet = [
-  //== Addressindex ==
   "getaddressbalance",
   "getaddressdeltas",
   "getaddressmempool",
   "getaddresstxids",
   "getaddressutxos",
-
-  //== Assets ==
   "getassetdata",
   // "getcacheinfo",
   //"getsnapshot",
@@ -21,8 +18,6 @@ const whitelistMainnet = [
   //"transfer",
   //"transferfromaddress",
   //"transferfromaddresses",
-
-  //== Blockchain ==
   //"clearmempool",
   "decodeblock",
   "getbestblockhash",
@@ -49,39 +44,29 @@ const whitelistMainnet = [
   //"savemempool",
   //"verifychain",
   //"verifytxoutproof",
-
-  //== Control ==
   //"getinfo",
   //"getmemoryinfo",
   //"getrpcinfo",
   "help",
   //"stop",
   //"uptime",
-
-  //== Generating ==
   //"generate",
   //"generatetoaddress",
   //"getgenerate",
   //"setgenerate",
-
-  //== Messages ==
   //"clearmessages",
   //"sendmessage",
   //"subscribetochannel",
   //"unsubscribefromchannel",
   //"viewallmessagechannels",
   //"viewallmessages",
-
-  //== Mining ==
   // "getblocktemplate",
-  //"getkawpowhash",
+  //"getevrprogpowhash",
   //"getmininginfo",
   "getnetworkhashps",
   //"pprpcsb",
   //"prioritisetransaction",
   //"submitblock",
-
-  //== Network ==
   //"addnode",
   //"clearbanned",
   //"disconnectnode",
@@ -94,8 +79,6 @@ const whitelistMainnet = [
   //"ping",
   //"setban",
   //"setnetworkactive",
-
-  //== Rawtransactions ==
   "combinerawtransaction",
   "createrawtransaction",
   "decoderawtransaction",
@@ -105,8 +88,6 @@ const whitelistMainnet = [
   "sendrawtransaction",
   "signrawtransaction",
   "testmempoolaccept",
-
-  //== Restricted assets ==
   // "addtagtoaddress",
   "checkaddressrestriction",
   "checkaddresstag",
@@ -126,35 +107,21 @@ const whitelistMainnet = [
   //"transferqualifier",
   //"unfreezeaddress",
   //"unfreezerestrictedasset",
-
-  //== Restricted ==
-  /*
-    "viewmyrestrictedaddresses",
-    "viewmytaggedaddresses",
-    */
-
-  //== Rewards ==
-  /*
-    "cancelsnapshotrequest",
+  /*"viewmyrestrictedaddresses",
+    "viewmytaggedaddresses",*/
+  /*"cancelsnapshotrequest",
     "distributereward",
     "getdistributestatus",
     "getsnapshotrequest",
     "listsnapshotrequests",
-    "requestsnapshot",
-
-    */
-
-  //== Util ==
+    "requestsnapshot",*/
   //"createmultisig",
   "estimatefee",
   "estimatesmartfee",
   "signmessagewithprivkey",
   "validateaddress",
   "verifymessage",
-
-  //== Wallet ==
-  /*
-    "abandontransaction",
+  /*"abandontransaction",
     "abortrescan",
     "addmultisigaddress",
     "addwitnessaddress",
@@ -202,21 +169,19 @@ const whitelistMainnet = [
     "sendtoaddress",
     "setaccount",
     "settxfee",
-    "signmessage",
-     */
+    "signmessage",*/
 ];
 
 const whitelistTestnet = [
-  //== Addressindex ==
   "getaddressbalance",
   "getaddressdeltas",
   "getaddressmempool",
   "getaddresstxids",
   "getaddressutxos",
-
-  //== Assets ==
   "getassetdata",
+  "getburnaddresses",	// testnet only
   // "getcacheinfo",
+  // "getcalculatedtoll",	// testnet only
   //"getsnapshot",
   //"issue",
   //"issueunique",
@@ -226,11 +191,11 @@ const whitelistTestnet = [
   //"listmyassets",
   //"purgesnapshot",
   //"reissue",
+  //"remint",			// testnet only
   //"transfer",
   //"transferfromaddress",
   //"transferfromaddresses",
-
-  //== Blockchain ==
+  //"updatemetadata",	// testnet only
   //"clearmempool",
   "decodeblock",
   "getbestblockhash",
@@ -257,39 +222,29 @@ const whitelistTestnet = [
   //"savemempool",
   //"verifychain",
   //"verifytxoutproof",
-
-  //== Control ==
   //"getinfo",
   //"getmemoryinfo",
   //"getrpcinfo",
   "help",
   //"stop",
   //"uptime",
-
-  //== Generating ==
   //"generate",
   //"generatetoaddress",
   //"getgenerate",
   //"setgenerate",
-
-  //== Messages ==
   //"clearmessages",
   //"sendmessage",
   //"subscribetochannel",
   //"unsubscribefromchannel",
   //"viewallmessagechannels",
   //"viewallmessages",
-
-  //== Mining ==
   // "getblocktemplate",
-  //"getkawpowhash",
+  //"getevrprogpowhash",
   //"getmininginfo",
   "getnetworkhashps",
   //"pprpcsb",
   //"prioritisetransaction",
   //"submitblock",
-
-  //== Network ==
   //"addnode",
   //"clearbanned",
   //"disconnectnode",
@@ -302,8 +257,6 @@ const whitelistTestnet = [
   //"ping",
   //"setban",
   //"setnetworkactive",
-
-  //== Rawtransactions ==
   "combinerawtransaction",
   "createrawtransaction",
   "decoderawtransaction",
@@ -313,8 +266,6 @@ const whitelistTestnet = [
   "sendrawtransaction",
   "signrawtransaction",
   "testmempoolaccept",
-
-  //== Restricted assets ==
   // "addtagtoaddress",
   "checkaddressrestriction",
   "checkaddresstag",
@@ -334,35 +285,21 @@ const whitelistTestnet = [
   //"transferqualifier",
   //"unfreezeaddress",
   //"unfreezerestrictedasset",
-
-  //== Restricted ==
-  /*
-    "viewmyrestrictedaddresses",
-    "viewmytaggedaddresses",
-    */
-
-  //== Rewards ==
-  /*
-    "cancelsnapshotrequest",
+  /*"viewmyrestrictedaddresses",
+    "viewmytaggedaddresses",*/
+  /*"cancelsnapshotrequest",
     "distributereward",
     "getdistributestatus",
     "getsnapshotrequest",
     "listsnapshotrequests",
-    "requestsnapshot",
-
-    */
-
-  //== Util ==
+    "requestsnapshot",*/
   //"createmultisig",
   "estimatefee",
   "estimatesmartfee",
   "signmessagewithprivkey",
   "validateaddress",
   "verifymessage",
-
-  //== Wallet ==
-  /*
-    "abandontransaction",
+  /*"abandontransaction",
     "abortrescan",
     "addmultisigaddress",
     "addwitnessaddress",
@@ -410,8 +347,7 @@ const whitelistTestnet = [
     "sendtoaddress",
     "setaccount",
     "settxfee",
-    "signmessage",
-     */
+    "signmessage",*/
 ];
 
 function getActiveWhitelist(network) {
