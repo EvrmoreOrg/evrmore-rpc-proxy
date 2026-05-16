@@ -1,10 +1,10 @@
 {
   "network": "mainnet",
   "concurrency": 4,
-  "endpoint": "https://rpc.example.org/rpc",
+  "endpoint": "https://evr-rpc-mainnet.evrmorecoin.org/rpc",
   "environment": "Evrmore Mainnet",
   "heading": "My RPC proxy",
-  "local_port": 9999,
+  "local_port": 80,
   "nodes": [
     {
       "name": "Local node",

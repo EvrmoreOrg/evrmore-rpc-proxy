@@ -19,16 +19,8 @@ async function work() {
   insertLabelBeforeValue(list, "== Assets ==", "getassetdata");
   insertLabelBeforeValue(list, "== Blockchain ==", "decodeblock");
   insertLabelBeforeValue(list, "== Control ==", "help");
-  insertLabelBeforeValue(
-    list,
-    "== Rawtransactions ==",
-    "combinerawtransaction"
-  );
-  insertLabelBeforeValue(
-    list,
-    "== Restricted assets ==",
-    "checkaddressrestriction"
-  );
+  insertLabelBeforeValue(list, "== Rawtransactions ==", "combinerawtransaction");
+  insertLabelBeforeValue(list, "== Restricted assets ==", "checkaddressrestriction");
   insertLabelBeforeValue(list, "== Util ==", "estimatefee");
   insertLabelBeforeValue(list, "== Mining ==", "getblocktemplate");
   /*
@@ -77,6 +69,13 @@ async function work() {
   fetchCodeExample("codeexample.js", "codeExample");
   fetchCodeExample("codeexample_result.json", "codeExampleResult");
   fetchCodeExample("/demo/index.html", "codeExampleWeb");
+
+  document.getElementById("liveExampleLink").addEventListener("click", (e) => {
+    e.preventDefault();
+    const frame = document.getElementById("liveDemoFrame");
+    frame.src = "/demo/";
+    frame.hidden = false;
+  });
 }
 
 async function post(url, body) {

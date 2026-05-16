@@ -1,21 +1,29 @@
 # evrmore-rpc-proxy
 
+This repository is based on work by RavenRebels. Thank you Dick Larsson !
+
+The code has been customized for Evrmore. It maintains separate RPC support lists, whitelists, and cachelists for mainnet and testnet, since they are not the same. But each proxy server running instance is either mainnet or testnet (`"network"` in `config.json`). See [docs/operator-rpc-networks.md](docs/operator-rpc-networks.md) and [config.example.json](config.example.json).
+
+
 ## A Web API for Evrmore
 
-**Purpose**: make Evrmore blockchain available via HTTP/WEB by exposing the RPC-API via a Proxy that only allows safe procedures.
+**Purpose**: Make Evrmore blockchain available via HTTP/WEB by exposing the RPC-API via a Proxy that only allows safe procedures.
 
-**Operators (mainnet vs testnet):** each running instance is either mainnet or testnet (`"network"` in `config.json`). See [docs/operator-rpc-networks.md](docs/operator-rpc-networks.md) and [config.example.json](config.example.json).
+RPC proxy servers for Evrmore are available live at:
 
-Check out this software live at https://rpc.ting.finance/
-![image](https://user-images.githubusercontent.com/9694984/226344965-7f01cee1-99ef-4a7f-b9db-8cfce4ccb5e8.png)
+    https://evr-rpc-mainnet.evrmorecoin.org/rpc the proxy server and
+    https://evr-rpc-mainnet.evrmorecoin.org documentation for mainnet
 
+    https://evr-rpc-testnet.evrmorecoin.org/rpc the proxy server and
+    https://evr-rpc-testnet.evrmorecoin.org documentation for testnet
 
 ## How do I use this software?
 
-When your local proxy is up and running you send requests using HTTP Post.
-The body of the request should contain string **method** and array **params** 
+Send requests to the proxy server using HTTP Post. The body of the request should contain string *method** and array **params**. You can use the public live proxy servers or use this repository
+to set up a private proxy for yourself.
 
 ### Example for web browser and Node.js 18+
+(adjust addresses and transaction numbers as needed for Evrmore mainnet or testnet)
 ```
 //Get block count
 rpc("getblockcount", []).then(function (count) {
@@ -70,11 +78,13 @@ git clone https://github.com/EvrmoreOrg/evrmore-rpc-proxy.git
 cd evrmore-rpc-proxy
 npm install 
 ```
+The proxy server must be connected to at least one fully synchronized Evrmore core node evrmored or evrmore-qt. The RPC user-id/password and url/port of each node must be specified in the proxy server's config.json file:
 
-### Sir, how do I configure this software?
+### How to configure the server
 Configure your setup in ./config.json
 ```
 {
+  "network": "mainnet",
   "concurrency": 4,
   "endpoint": "https://rpc.ting.finance/rpc",
   "environment": "Evrmore Testnet",
@@ -97,7 +107,8 @@ Configure your setup in ./config.json
 
   ```
 
-### Sir, how should my Evrmore core node be configured?
+
+### The Evrmore core node configuration file evrmore.conf also needs appropriate settings
 Here is a recommendation
 ```
 server=1 
@@ -128,219 +139,12 @@ rpcallowip=127.0.0.1
 dbcache=4096
 ```
 
-## Sir, how do I start this application?
+## To start the application:
 
 ```
 npm start
 ```
 
-## Help with Evrmore RPC calls, arguments and stuff
-Go to https://evr-rpc-mainnet.evrmorecoin.org for in depth description of each RPC call
+## Help with Evrmore RPC calls and arguments
+Go to https://evr-rpc-mainnet.evrmorecoin.org or https://evr-rpc-testnet.evrmorecoin.org for in depth descriptions of each RPC call
 ![image](https://user-images.githubusercontent.com/9694984/212323158-6ed00511-cfcc-4338-990c-ebb57f590cf0.png)
-
-
-## List of Evrmore RPC calls
-This is a raw list, a lot of these calls are not whitelisted.
-For example we do NOT let developers call procedure `dumpprivkey`
-```
-== Addressindex ==
-getaddressbalance
-getaddressdeltas
-getaddressmempool
-getaddresstxids
-getaddressutxos
-
-== Assets ==
-getassetdata "asset_name"
-getcacheinfo 
-getsnapshot "asset_name" block_height
-issue "asset_name" qty "( to_address )" "( change_address )" ( units ) ( reissuable ) ( has_ipfs ) "( ipfs_hash )"
-issueunique "root_name" [asset_tags] ( [ipfs_hashes] ) "( to_address )" "( change_address )"
-listaddressesbyasset "asset_name" (onlytotal) (count) (start)
-listassetbalancesbyaddress "address" (onlytotal) (count) (start)
-listassets "( asset )" ( verbose ) ( count ) ( start )
-listmyassets "( asset )" ( verbose ) ( count ) ( start ) (confs) 
-purgesnapshot "asset_name" block_height
-reissue "asset_name" qty "to_address" "change_address" ( reissuable ) ( new_units) "( new_ipfs )" 
-transfer "asset_name" qty "to_address" "message" expire_time "change_address" "asset_change_address"
-transferfromaddress "asset_name" "from_address" qty "to_address" "message" expire_time "evr_change_address" "asset_change_address"
-transferfromaddresses "asset_name" ["from_addresses"] qty "to_address" "message" expire_time "evr_change_address" "asset_change_address"
-
-== Blockchain ==
-clearmempool
-decodeblock "blockhex"
-getbestblockhash
-getblock "blockhash" ( verbosity ) 
-getblockchaininfo
-getblockcount
-
-getblockhash height
-getblockhashes timestamp
-getblockheader "hash" ( verbose )
-getchaintips
-getchaintxstats ( nblocks blockhash )
-getdifficulty
-getmempoolancestors txid (verbose)
-getmempooldescendants txid (verbose)
-getmempoolentry txid
-getmempoolinfo
-getrawmempool ( verbose )
-getspentinfo
-gettxout "txid" n ( include_mempool )
-gettxoutproof ["txid",...] ( blockhash )
-gettxoutsetinfo
-preciousblock "blockhash"
-pruneblockchain
-savemempool
-verifychain ( checklevel nblocks )
-verifytxoutproof "proof"
-
-== Control ==
-getinfo
-getmemoryinfo ("mode")
-getrpcinfo
-help ( "command" )
-stop
-uptime
-
-== Generating ==
-generate nblocks ( maxtries )
-generatetoaddress nblocks address (maxtries)
-getgenerate
-setgenerate generate ( genproclimit )
-
-== Messages ==
-clearmessages 
-sendmessage "channel_name" "ipfs_hash" (expire_time)
-subscribetochannel 
-unsubscribefromchannel 
-viewallmessagechannels 
-viewallmessages 
-
-== Mining ==
-getblocktemplate ( TemplateRequest )
-getkawpowhash "header_hash" "mix_hash" nonce, height, "target"
-getmininginfo
-getnetworkhashps ( nblocks height )
-pprpcsb "header_hash" "mix_hash" "nonce"
-prioritisetransaction <txid> <dummy value> <fee delta>
-submitblock "hexdata"  ( "dummy" )
-
-== Network ==
-addnode "node" "add|remove|onetry"
-clearbanned
-disconnectnode "[address]" [nodeid]
-getaddednodeinfo ( "node" )
-getconnectioncount
-getnettotals
-getnetworkinfo
-getpeerinfo
-listbanned
-ping
-setban "subnet" "add|remove" (bantime) (absolute)
-setnetworkactive true|false
-
-== Rawtransactions ==
-combinerawtransaction ["hexstring",...]
-createrawtransaction [{"txid":"id","vout":n},...] {"address":(amount or object),"data":"hex",...}
-decoderawtransaction "hexstring"
-decodescript "hexstring"
-fundrawtransaction "hexstring" ( options )
-getrawtransaction "txid" ( verbose )
-sendrawtransaction "hexstring" ( allowhighfees )
-signrawtransaction "hexstring" ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )
-testmempoolaccept ["rawtxs"] ( allowhighfees )
-
-== Restricted assets ==
-addtagtoaddress tag_name to_address (change_address) (asset_data)
-checkaddressrestriction address restricted_name
-checkaddresstag address tag_name
-checkglobalrestriction restricted_name
-freezeaddress asset_name address (change_address) (asset_data)
-freezerestrictedasset asset_name (change_address) (asset_data)
-getverifierstring restricted_name
-issuequalifierasset "asset_name" qty "( to_address )" "( change_address )" ( has_ipfs ) "( ipfs_hash )"
-issuerestrictedasset "asset_name" qty "verifier" "to_address" "( change_address )" (units) ( reissuable ) ( has_ipfs ) "( ipfs_hash )"
-isvalidverifierstring verifier_string
-listaddressesfortag tag_name
-listaddressrestrictions address
-listglobalrestrictions
-listtagsforaddress address
-reissuerestrictedasset "asset_name" qty to_address ( change_verifier ) ( "new_verifier" ) "( change_address )" ( new_units ) ( reissuable ) "( new_ipfs )"
-removetagfromaddress tag_name to_address (change_address) (asset_data)
-transferqualifier "qualifier_name" qty "to_address" ("change_address") ("message") (expire_time) 
-unfreezeaddress asset_name address (change_address) (asset_data)
-unfreezerestrictedasset asset_name (change_address) (asset_data)
-
-== Restricted ==
-viewmyrestrictedaddresses 
-viewmytaggedaddresses 
-
-== Rewards ==
-cancelsnapshotrequest "asset_name" block_height
-distributereward "asset_name" snapshot_height "distribution_asset_name" gross_distribution_amount ( "exception_addresses" ) ("change_address") ("dry_run")
-getdistributestatus "asset_name" snapshot_height "distribution_asset_name" gross_distribution_amount ( "exception_addresses" )
-getsnapshotrequest "asset_name" block_height
-listsnapshotrequests ["asset_name" [block_height]]
-requestsnapshot "asset_name" block_height
-
-== Util ==
-createmultisig nrequired ["key",...]
-estimatefee nblocks
-estimatesmartfee conf_target ("estimate_mode")
-signmessagewithprivkey "privkey" "message"
-validateaddress "address"
-verifymessage "address" "signature" "message"
-
-== Wallet ==
-abandontransaction "txid"
-abortrescan
-addmultisigaddress nrequired ["key",...] ( "account" )
-addwitnessaddress "address"
-backupwallet "destination"
-bumpfee has been deprecated on the EVR Wallet.
-dumpprivkey "address"
-dumpwallet "filename"
-encryptwallet "passphrase"
-getaccount "address"
-getaccountaddress "account"
-getaddressesbyaccount "account"
-getbalance ( "account" minconf include_watchonly )
-getmasterkeyinfo
-getmywords ( "account" )
-getnewaddress ( "account" )
-getrawchangeaddress
-getreceivedbyaccount "account" ( minconf )
-getreceivedbyaddress "address" ( minconf )
-gettransaction "txid" ( include_watchonly )
-getunconfirmedbalance
-getwalletinfo
-importaddress "address" ( "label" rescan p2sh )
-importmulti "requests" ( "options" )
-importprivkey "privkey" ( "label" ) ( rescan )
-importprunedfunds
-importpubkey "pubkey" ( "label" rescan )
-importwallet "filename"
-keypoolrefill ( newsize )
-listaccounts ( minconf include_watchonly)
-listaddressgroupings
-listlockunspent
-listreceivedbyaccount ( minconf include_empty include_watchonly)
-listreceivedbyaddress ( minconf include_empty include_watchonly)
-listsinceblock ( "blockhash" target_confirmations include_watchonly include_removed )
-listtransactions ( "account" count skip include_watchonly)
-listunspent ( minconf maxconf  ["addresses",...] [include_unsafe] [query_options])
-listwallets
-lockunspent unlock ([{"txid":"txid","vout":n},...])
-move "fromaccount" "toaccount" amount ( minconf "comment" )
-removeprunedfunds "txid"
-rescanblockchain ("start_height") ("stop_height")
-sendfrom "fromaccount" "toaddress" amount ( minconf "comment" "comment_to" )
-sendfromaddress "from_address" "to_address" amount ( "comment" "comment_to" subtractfeefromamount replaceable conf_target "estimate_mode")
-sendmany "fromaccount" {"address":amount,...} ( minconf "comment" ["address",...] replaceable conf_target "estimate_mode")
-sendtoaddress "address" amount ( "comment" "comment_to" subtractfeefromamount replaceable conf_target "estimate_mode")
-setaccount "address" "account"
-settxfee amount
-signmessage "address" "message"
-
-```

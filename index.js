@@ -98,7 +98,7 @@ app.get("/rpc", (req, res) => {
     res.status(405).set("Allow", "POST")
         .send({
             description:
-            "Please use the HTTP POST method to proceed. For more details, refer to our documentation.",
+            "Please use the HTTP POST method to proceed. For more details, refer to the repo documentation at https://github.com/EvrmoreOrg/evrmore-rpc-proxy.",
         });
 });
 async function addToQueue(request, response) {

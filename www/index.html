@@ -17,7 +17,7 @@
     <main class="container">
       <h1>RPC <rpc-settings key="environment" /></h1>
       <article>
-        <h2>Sir, what is this?</h2>
+        <h2>Overview</h2>
 
         <p>This service provides dedicated access to the blockchain.</p>
 
@@ -35,10 +35,8 @@
           You can send remote procedure calls (RPCs) in the same way as if you had a local node. Whitelisted procedure calls are listed below.
         </p>
         <p>
-          We operate on a best effort basis, doing everything possible to
-          maintain service availability. However, like any online service, we
-          face challenges such as maintenance requirements and unexpected
-          technical issues.
+          To report problems or solutions, please create Issues or Pull Requests
+          in the Github repository. The code is all open source.
         </p>
         <p>Open source on GitHub <a href="https://github.com/EvrmoreOrg/evrmore-rpc-proxy">https://github.com/EvrmoreOrg/evrmore-rpc-proxy</a></p>
       </article>
@@ -50,7 +48,7 @@
       </article>
 
       <article>
-        <h3>Sir, what about performance?</h3>
+        <h3>Notes about performance:</h3>
         <p>
           To get low latency and to support a massive amount of concurrent
           requests we Cache and Queue
@@ -79,7 +77,13 @@
 
       <article>
         <h3>Example - Web / JavaScript</h3>
-        <p><a href="/demo" target="_blank">Live example</a></p>
+        <p><a href="#" id="liveExampleLink">Live example</a></p>
+        <iframe
+          id="liveDemoFrame"
+          title="Live example - RPC demo"
+          hidden
+          style="width: 100%; min-height: 16rem; border: 0"
+        ></iframe>
         <pre><code class="language-html" id="codeExampleWeb"> </code></pre>
 
         <h3>Example - JavaScript/Node.js</h3>
