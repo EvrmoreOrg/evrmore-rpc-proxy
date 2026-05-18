@@ -88,7 +88,7 @@ Configure your setup in ./config.json
   "concurrency": 4,
   "endpoint": "https://evr-rpc-mainnet.evrmorecoin.org/rpc",
   "environment": "Evrmore Testnet",
-  "local_port": 80,
+  "local_port": 8090,
   "nodes": [
     {
       "name": "Node number 1",

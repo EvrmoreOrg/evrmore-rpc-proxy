@@ -4,7 +4,7 @@
   "endpoint": "https://evr-rpc-mainnet.evrmorecoin.org/rpc",
   "environment": "Evrmore Mainnet",
   "heading": "My RPC proxy",
-  "local_port": 80,
+  "local_port": 8090,
   "nodes": [
     {
       "name": "Local node",
