@@ -86,30 +86,28 @@ Configure your setup in ./config.json
 {
   "network": "mainnet",
   "concurrency": 4,
-  "endpoint": "https://rpc.ting.finance/rpc",
+  "endpoint": "https://evr-rpc-mainnet.evrmorecoin.org/rpc",
   "environment": "Evrmore Testnet",
-  "local_port": 9999,
+  "local_port": 80,
   "nodes": [
     {
       "name": "Node number 1",
       "username": "dauser",
       "password": "dapassword",
-      "evrmore_url": "http://localhost:8888"
+      "evrmore_url": "http://localhost:8819"
     },
     {
       "name": "Nody two tower", 
-      "evrmore_url": "http://127.0.0.1:8766",
+      "evrmore_url": "http://127.0.0.1:8819",
       "password": "supermega2354ergsecret",
       "username": "supermegas3435ecwertwertret"
     }
   ]
 }
 
-  ```
+```
 
-
-### The Evrmore core node configuration file evrmore.conf also needs appropriate settings
-Here is a recommendation
+### The Evrmore core node configuration file evrmore.conf also needs appropriate settings. Here is a recommendation:
 ```
 server=1 
 listen=1

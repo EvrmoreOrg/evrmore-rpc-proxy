@@ -22,19 +22,19 @@ function getConfig() {
     {
         "network": "mainnet",
         "concurrency": 4,
-        "endpoint": "https://rpc.ting.finance/rpc",
+        "endpoint": "https://evr-rpc-mainnet.evrmorecoin.org/rpc",
         "environment": "Evrmore Mainnet",
-        "local_port": 9999,
+        "local_port": 80,
         "nodes": [
           {
             "name": "Node number 1",
             "username": "dauser",
             "password": "dapassword",
-            "evrmore_url": "http://localhost:8766"
+            "evrmore_url": "http://localhost:8819"
           },
           {
             "name": "Node number 2",
-            "evrmore_url": "http://127.0.0.1:8888",
+            "evrmore_url": "http://127.0.0.1:8819",
             "password": "secret",
             "username": "secret"
           }

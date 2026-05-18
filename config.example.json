@@ -10,7 +10,7 @@
       "name": "Local node",
       "username": "rpcuser",
       "password": "rpcpassword",
-      "evrmore_url": "http://127.0.0.1:8766"
+      "evrmore_url": "http://127.0.0.1:8819"
     }
   ]
 }
