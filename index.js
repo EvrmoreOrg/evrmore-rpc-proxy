@@ -5,6 +5,7 @@ const process = require("process"); //to get memory used
 const cacheService = require("./cacheService");
 const cors = require("cors");
 const express = require("express");
+const path = require("path");
 const getConfig = require("./getConfig");
 const { getActiveWhitelist, isWhitelisted } = require("./whitelist");
 
@@ -59,6 +60,19 @@ const port = config.local_port || process.env.PORT || 80;
 app.use(express.json());
 
 app.use(express.static("www"));
+
+const explorerDir = path.join(__dirname, "explorer");
+// Route "/explorer" also matches "/explorer/" unless we guard req.path (Express non-strict routing).
+app.get("/explorer", (req, res, next) => {
+  if (req.path !== "/explorer") {
+    return next();
+  }
+  res.redirect(301, "/explorer/");
+});
+app.use(
+  "/explorer",
+  express.static(explorerDir, { index: "index.html", redirect: false })
+);
 
 app.get("/whitelist", (req, res) => {
   res.send(getActiveWhitelist(config.network));
