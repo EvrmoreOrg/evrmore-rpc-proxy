@@ -148,5 +148,8 @@ Go to https://evr-rpc-mainnet.evrmorecoin.org or https://evr-rpc-testnet.evrmore
 ![image](https://user-images.githubusercontent.com/9694984/212323158-6ed00511-cfcc-4338-990c-ebb57f590cf0.png)
 
 ## Explorer
-Note that a subdirectory named "explorer" may be added containing the (non-git) files from the evr-connor-explorer repository. A few code changes were made to the rpc-proxy server code to support accessing it at <proxy server address>:<port>/explorer
+Note that a subdirectory named "explorer" may be added containing the (non-git) files from the evr-connor-explorer repository. A few code changes were made to the rpc-proxy server code to support accessing it at 
+```
+<proxy server address>:<port>/explorer
+```
 
